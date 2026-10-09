@@ -1,0 +1,24 @@
+{
+  "repository": "https://github.com/microsoft/agent-lightning",
+  "commit": "218f1f7c0bac0800de4d5a4e5e6f61cf7b5038b4",
+  "source": "examples/swe_smith/agents/smith_agent.py",
+  "symbols": [
+    "SUBMIT_MARKER",
+    "_CMD_ENV",
+    "_GIT_ACCESS_RE",
+    "_GIT_INVOKE_RE",
+    "_NET_FETCH_RE",
+    "_OVERLONG_WARNING",
+    "_PKG_INSTALL_RE",
+    "_PY_NET_RE",
+    "_TEST_TAMPER_RE",
+    "_forbidden_action",
+    "is_submission",
+    "length_penalized_reward",
+    "prompt_length_penalty",
+    "render_observation"
+  ],
+  "source_sha256": "72a6b8950578f929700918127e5da15c4b7051ef906a0532efe53546e78fe433",
+  "adapted_symbols": [],
+  "adaptation": "Runtime prompts and native bash tool protocol live only in ../thinking_prompts/ and ../thinking_protocol.py. Upstream text-action parser and prompt copies are not retained."
+}

@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "focalrl"
+version = "0.1.0"
+description = "FocalRL: localized credit assignment for long-horizon agents"
+requires-python = ">=3.11"
+license = {file = "LICENSE"}
+dependencies = []
+
+[tool.setuptools.packages.find]
+include = ["miles*", "miles_plugins*", "adaptive_branching*", "examples.fully_async*", "examples.train_infer_mismatch_helper*"]
+namespaces = true
+
+[tool.setuptools.package-data]
+adaptive_branching = ["config/*.yaml", "src/swe/thinking_prompts/*.txt", "src/swe/lightning_reference/LICENSE", "src/swe/lightning_reference/*.json", "patches/*.patch"]
+miles = ["utils/chat_template_utils/templates/*.jinja", "backends/**/*.cu"]
+"examples.train_infer_mismatch_helper" = ["*.yaml"]
+
+[tool.pytest.ini_options]
+testpaths = ["adaptive_branching/tests", "tests"]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+addopts = "--import-mode=importlib"
+
+[tool.ruff]
+line-length = 119
