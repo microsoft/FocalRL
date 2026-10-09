@@ -1,0 +1,25 @@
+# Anonymous release: endpoints and credentials are supplied at runtime.
+common:
+  base_url: ${oc.env:LLM_JUDGE_URL,http://localhost:8001/v1}
+  api_key: ${oc.env:LLM_JUDGE_KEY}
+  timeout: 300
+full_outcome:
+  model: gpt-5.6-sol
+  reasoning_effort: medium
+  max_tokens: 16384
+  max_concurrency: 16
+  max_retries: 5
+locator:
+  model: gpt-5.6-sol
+  reasoning_effort: medium
+  max_tokens: 32768
+  max_concurrency: 8
+  max_retries: 5
+  trace_max_chars: 512000
+local_prm:
+  model: gpt-5.6-sol
+  reasoning_effort: medium
+  max_tokens: 32768
+  max_concurrency: 16
+  max_retries: 5
+  trace_max_chars: 512000

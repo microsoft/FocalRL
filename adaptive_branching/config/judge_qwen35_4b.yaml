@@ -1,0 +1,31 @@
+# Anonymous release: endpoints and credentials are supplied at runtime.
+common:
+  base_url: ${oc.env:LLM_JUDGE_URL,http://localhost:8001/v1}
+  api_key: ${oc.env:LLM_JUDGE_KEY}
+  timeout: 1800
+  temperature: 1.0
+  top_p: 0.95
+  top_k: 20
+  min_p: 0.0
+  presence_penalty: 1.5
+  repetition_penalty: 1.0
+full_outcome:
+  model: Qwen/Qwen3.5-4B
+  reasoning_effort: ''
+  max_tokens: 32768
+  max_concurrency: 32
+  max_retries: 3
+locator:
+  model: Qwen/Qwen3.5-4B
+  reasoning_effort: ''
+  max_tokens: 32768
+  max_concurrency: 32
+  max_retries: 3
+  trace_max_chars: 512000
+local_prm:
+  model: Qwen/Qwen3.5-4B
+  reasoning_effort: ''
+  max_tokens: 32768
+  max_concurrency: 32
+  max_retries: 3
+  trace_max_chars: 512000

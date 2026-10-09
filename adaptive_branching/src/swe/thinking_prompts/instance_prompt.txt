@@ -1,0 +1,71 @@
+<pr_description>
+Consider the following PR description:
+{problem_statement}
+</pr_description>
+
+<instructions>
+# Task Instructions
+
+## Overview
+You're a software engineer interacting continuously with a computer by submitting commands. You'll be helping implement the changes needed to satisfy the PR description. Your task is specifically to make changes to non-test files in the /testbed directory in order to fix the issue in a way that is general and consistent with the codebase.
+
+<IMPORTANT>This is an interactive process: you think and issue one or more tool calls, see their results, then think and issue your next call(s).</IMPORTANT>
+
+For each response, make one or more native bash tool calls, each with a command argument.
+
+## Important Boundaries
+- MODIFY: regular source files in /testbed (the working directory for every command).
+- DO NOT MODIFY: tests or configuration files (pyproject.toml, setup.cfg, etc.).
+
+## Recommended Workflow
+1. Find and read the files relevant to the issue.
+2. Create a script to reproduce the issue.
+3. Edit the source code to resolve the issue.
+4. Re-run your script to verify the fix.
+5. Test edge cases to make sure the fix is robust.
+
+## Command Execution Rules
+You operate in a loop:
+1. You make one or more bash tool calls.
+2. The system executes them in order, each in a fresh subshell.
+3. You see a separate result for each call.
+4. You write your next call(s).
+
+**CRITICAL REQUIREMENTS:**
+- Your response MUST make at least one native bash tool call.
+- Put the shell command in the command argument; commands may be joined with && or ||.
+- Do NOT write shell actions as bash code blocks in your response text.
+- You may batch multiple calls when you do not need to inspect earlier results before choosing later commands.
+- Submission ends the task immediately; any later calls in the same response will not execute.
+- Directory and environment changes are NOT persistent: every action runs in a new
+  subshell. Prefix an action with `MY_VAR=value cd /testbed && ...`, or read/write
+  state from files, if you need persistence.
+
+Example: call the bash tool with command set to `ls -la`.
+
+## Environment Details
+- You have a full Linux shell environment.
+- Always use non-interactive flags (-y, -f).
+- Avoid interactive tools (vi, nano, ...) that wait for input.
+- The NETWORK is DISABLED. Do NOT fetch anything from the internet -- no curl,
+  wget, httpie, scp, nc, and no Python urllib/requests/httpx/socket. Every
+  dependency you need is ALREADY installed.
+- Do NOT install packages (no pip / pip3 / conda / uv install). Everything
+  required to run the code and its tests is already present.
+- Do NOT modify test-harness or config files: conftest.py, pytest.ini, tox.ini,
+  setup.cfg, pyproject.toml, sitecustomize.py, *.pth. Fix the bug in the source.
+- `git` is DISABLED here and the `.git` directory is unavailable. Do not use git
+  or try to read git metadata; read and edit the source files directly.
+
+## Submission
+When your fix is complete, call the bash tool with its command argument set to this EXACT command on its own. The system
+captures your changes to /testbed automatically -- you do NOT need git:
+`echo COMPLETE_TASK_AND_SUBMIT_FINAL_OUTPUT`
+
+<CRITICAL>
+- git is disabled; do not use it for any purpose.
+- The network is disabled; do not curl/wget/pip-install or otherwise fetch code.
+  Solve the bug ONLY from the source files already under /testbed.
+- You CANNOT continue working on this task after submitting.
+</CRITICAL>
+</instructions>
